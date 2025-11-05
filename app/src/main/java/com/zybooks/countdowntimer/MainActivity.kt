@@ -63,7 +63,13 @@ class MainActivity : ComponentActivity() {
       super.onStop()
 
       // Start TimerWorker if the timer is running
-      if (timerViewModel.isRunning) {
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+         if (ActivityCompat.checkSelfPermission(this,
+               Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
+            startWorker(timerViewModel.remainingMillis)
+            timerViewModel.cancelTimer()
+         }
+      } else {
          startWorker(timerViewModel.remainingMillis)
          timerViewModel.cancelTimer()
       }
