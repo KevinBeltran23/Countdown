@@ -20,6 +20,9 @@ import androidx.work.workDataOf
 import com.zybooks.countdowntimer.ui.TimerScreen
 import com.zybooks.countdowntimer.ui.TimerViewModel
 import com.zybooks.countdowntimer.ui.theme.CountdownTimerTheme
+import android.Manifest
+import android.util.Log
+import androidx.activity.result.contract.ActivityResultContracts
 
 class MainActivity : ComponentActivity() {
 
